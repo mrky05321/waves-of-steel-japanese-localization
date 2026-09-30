@@ -164,6 +164,9 @@ function Read-HashManifest([string]$Path) {
 function Initialize-BackupFromGameFiles {
     $expectedEntries = @(Read-HashManifest -Path $pristineManifestPath)
     $optionalPaths = @('Waves of Steel_Data\level1.before-japanese-settings.bak')
+    $level1Path = 'Waves of Steel_Data\level1'
+    $level1BeforeSettingsPath = 'Waves of Steel_Data\level1.before-japanese-settings.bak'
+    $level1BeforeSettingsEntry = $expectedEntries | Where-Object { $_.RelativePath -eq $level1BeforeSettingsPath } | Select-Object -First 1
     $verifiedEntries = [System.Collections.Generic.List[object]]::new()
     $gameRootFullPath = [System.IO.Path]::GetFullPath($gameRoot).TrimEnd([char[]]@('\', '/')) + [System.IO.Path]::DirectorySeparatorChar
 
@@ -180,11 +183,21 @@ function Initialize-BackupFromGameFiles {
             throw "Required original game file is missing: $sourceFullPath"
         }
         $sourceHash = (Get-FileHash -LiteralPath $sourceFullPath -Algorithm SHA256).Hash.ToUpperInvariant()
-        if ($sourceHash -ne $entry.Hash) {
+        $knownVersionHash = $sourceHash -eq $entry.Hash
+        if (-not $knownVersionHash -and
+            $entry.RelativePath -eq $level1Path -and
+            $null -ne $level1BeforeSettingsEntry -and
+            $sourceHash -eq $level1BeforeSettingsEntry.Hash) {
+            # A clean install may have the known pre-settings level1 scene directly
+            # at level1, without the companion .bak file. Preserve its actual hash.
+            $knownVersionHash = $true
+            Write-Output 'Recognized the supported pre-settings level1 scene.'
+        }
+        if (-not $knownVersionHash) {
             if ($entry.RelativePath -in $optionalPaths) { continue }
             throw "Game file does not match the supported pristine version; no backup or game files were changed: $sourceFullPath"
         }
-        $verifiedEntries.Add($entry)
+        $verifiedEntries.Add([pscustomobject]@{ Hash = $sourceHash; RelativePath = $entry.RelativePath })
     }
     $expectedEntries = @($verifiedEntries.ToArray())
 
