@@ -1,0 +1,8 @@
+# Installation-specific backups include original game files; keep them local.
+/backup/
+/.backup-initializing-*/
+
+# Temporary and local backup files.
+*.bak
+*.tmp
+*.log

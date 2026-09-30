@@ -1,0 +1,7 @@
+This folder contains a limited set of libraries and support data used by the localization patcher, not the complete UABEA application.
+
+See THIRD-PARTY-NOTICES.txt for the bundled component inventory, copyright notices, and full MIT license texts. The dependency list on the UABEA project page covers the full application and is not a list of components bundled here.
+
+Upstream projects:
+- UABEA: https://github.com/nesrak1/UABEA
+- AssetsTools.NET: https://github.com/nesrak1/AssetsTools.NET
