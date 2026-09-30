@@ -16,10 +16,15 @@
 
 ゲーム側で生成される文字列や画像内文字など、翻訳データから安全に差し替えられない英語が残る場合があります。一定時間エリア内にとどまる目標表示は、ケツァルコアトルのステージで日本語表示を確認しています。
 
-## 適用方法
+## ダウンロードと導入
 
-適用スクリプトは、開発者の現在のゲームインストールに合わせて作成しています。ゲームを終了してから JapaneseLocalization フォルダー内の apply-japanese.bat を起動し、1 で適用、2 で復元します。PowerShell 7 があれば優先して使用し、なければ Windows 標準の Windows PowerShell 5.1 を使用します。通常は追加の PowerShell のインストールは不要です。JapaneseLocalization はゲーム本体フォルダーの直下に置きます。
+1. [GitHubのReleasesページ](https://github.com/mrky05321/waves-of-steel-japanese-localization/releases)を開き、最新Releaseの `Assets` から `Source code (zip)` をダウンロードします。これはGitHubが自動生成するリポジトリ一式のZIPで、専用インストーラーではありません。
+2. ZIPを展開し、展開されたフォルダーを `JapaneseLocalization` に名前変更します。
+3. `JapaneseLocalization` フォルダーを、ゲーム本体の `Waves of Steel.exe` と同じ場所に置きます。配置後、たとえば `...All Or Nothing Waves of Steel\JapaneseLocalization\apply-japanese.bat` となります。
+4. ゲームを終了し、`JapaneseLocalization\apply-japanese.bat` を起動して `1` を選びます。初回は原本ファイルのバックアップが作成されます。
+5. 原本に戻す場合は、同じバッチファイルを起動して `2` を選びます。
 
+PowerShell 7 があれば優先して使用し、なければWindows標準の Windows PowerShell 5.1 を使用します。通常、PowerShellの追加インストールは不要です。
 ### GitHubから取得する場合の注意
 
 このGitHubリポジトリやZIPには、ゲームの原本ファイルを含めていません。Steam版ゲーム本体がインストール済みで、対象ファイルが対応する未改変版なら、初回適用時に必要な原本ファイルをローカルの `JapaneseLocalization/backup` フォルダーへコピーします。必要容量の目安は約180 MB（176 MiB）です。このバックアップはGitHubの配布物には含まれず、利用者のPCに保存されます。
