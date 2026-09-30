@@ -18,8 +18,8 @@
 
 ## ダウンロードと導入
 
-1. [GitHubのReleasesページ](https://github.com/mrky05321/waves-of-steel-japanese-localization/releases)を開き、最新Releaseの `Assets` から `Source code (zip)` をダウンロードします。これはGitHubが自動生成するリポジトリ一式のZIPで、専用インストーラーではありません。
-2. ZIPを展開し、展開されたフォルダーをゲーム本体の `Waves of Steel.exe` と同じ場所に置きます。フォルダー名は変更不要です。配置後、たとえば `...\All Or Nothing Waves of Steel\waves-of-steel-japanese-localization-1.0.0\apply-japanese.bat` のようになります。
+1. [GitHubのReleasesページ](https://github.com/mrky05321/waves-of-steel-japanese-localization/releases)を開き、最新Releaseの `Assets` から `Source code (zip)` をダウンロードします。
+2. ZIPを展開し、展開されたフォルダーをゲーム本体の `Waves of Steel.exe` と同じ場所に置きます。配置後、たとえば `...\All Or Nothing Waves of Steel\waves-of-steel-japanese-localization-1.0.0\apply-japanese.bat` のようになります。
 3. ゲームを終了し、そのフォルダー内の `apply-japanese.bat` を起動して `1` を選びます。初回は原本ファイルのバックアップが作成されます。
 4. 原本に戻す場合は、同じバッチファイルを起動して `2` を選びます。
 
